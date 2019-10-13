@@ -11,9 +11,10 @@ class CommentsController < ApplicationController
 
     def new
         if params[:product_id] && @product = Product.find_by_id(params[:product_id])
-            @comment = Comment.new
+            @comment = @product.comments.build(comment_params)
         else
-            
+            @comment = Comment.new
+        end      
     end
 
     def create
@@ -48,6 +49,6 @@ class CommentsController < ApplicationController
     private
 
     def comment_params
-        params.require(:comment).permit(:content)
+        params.require(:comment).permit(:content, :product_id)
     end
 end

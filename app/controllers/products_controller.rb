@@ -6,16 +6,26 @@ class ProductsController < ApplicationController
     end
 
     def index
-        @products = Products.all 
+        if params[:user_id] && @user = User.find_by_id(params[:user_id])
+            @products = @user.products
+        else
+            @error = "That user doesn't exist" if params[:user_id]
+            @products = Product.all 
+        end
     end
 
     def create
         @product = current_user.products.build(product_params)
-        if @product.save
+        if @produc t.save
             redirect_to products_path
         else
             render :new
         end
+    end
+
+    def show
+        @product = Product.find_by_id(params[:id])
+        redirect_to products_path if !@product
     end
 
     private

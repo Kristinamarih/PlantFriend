@@ -10,5 +10,5 @@
 
 <h4>Comments:</h4>
 <% @product.comments.each do |c| %>
-    <li><strong><%= c.user.username %></strong> says "<%= link_to c.content, comment_path(c)%>"</li>
+    <li><strong><%= c.user.username %></strong> says "<%= link_to c.content, product_comment_path(@product, c)%>"</li>
 <% end %>

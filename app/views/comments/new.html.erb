@@ -1,2 +1,19 @@
+<% if @comment.product %>
+<h1>Add a Comment for <%= @comment.product.name %></h1>
+<% else %>
 <h1>Add a Comment</h1>
+<% end %>
 
+<%= form_for([@comment.product, @comment]) do |f| %>
+
+    <% if !@comment.product %>
+    <%= f.label :product %>
+    <%= f.collection_select :product_id, Product.all, :id, :name %>
+    <% end %>
+
+    <%= f.label :content %>
+    <%= f.text_field :content %>
+
+    <%= f.submit "Create comment" %>
+
+<% end %>
