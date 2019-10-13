@@ -20,6 +20,11 @@
       <%= link_to "Log in", login_path %> |
     <% end %>
     </div>
+    <div>
+      <% if flash[:message] %>
+        <%= flash[:message] %>
+      <% end %>
+    </div>
     <%= yield %>
   </body>
 </html>

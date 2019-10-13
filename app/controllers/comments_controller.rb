@@ -2,7 +2,11 @@ class CommentsController < ApplicationController
     before_action :redirect_if_not_logged_in
 
     def index
-        @comments = Comment.all 
+        if params[:product_id] && @product = Product.find_by_id(params[:product_id])
+            @comments = @product.comments
+        else
+            @comments = Comment.all
+        end
     end
 
     def new
@@ -36,5 +40,11 @@ class CommentsController < ApplicationController
     end
 
     def destroy
+    end
+
+    private
+
+    def comment_params
+        params.require(:comment).permit(:content)
     end
 end

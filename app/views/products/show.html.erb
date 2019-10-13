@@ -1,0 +1,11 @@
+<h1><%= @product.name %></h1>
+<h3><%= Grown by: <%= @product.user.username %></h3>
+
+<div><%= @product.quantity %></div>
+<div><%= @product.price %></div>
+<div><%= @product.description %><.div>
+
+<h4>Comments:</h4>
+<% @product.comments.each do |c| %>
+    <li><strong><%= c.user.username %></strong> says "<%= link_to c.content, comment_path(c)%>"</li>
+<% end %>
