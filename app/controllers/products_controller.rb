@@ -5,6 +5,10 @@ class ProductsController < ApplicationController
         @product = Product.new
     end
 
+    def index
+        @products = Products.all 
+    end
+
     def create
         @product = current_user.products.build(product_params)
         if @product.save

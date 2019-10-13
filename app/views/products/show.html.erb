@@ -3,7 +3,10 @@
 
 <div><%= @product.quantity %></div>
 <div><%= @product.price %></div>
-<div><%= @product.description %><.div>
+<div><%= @product.description %></div>
+
+<p><%= link_to "See all comments", product_comments_path(@product) %></p>
+<p><%= link_to "Add a new comment", new_product_comment(@product) %></p>
 
 <h4>Comments:</h4>
 <% @product.comments.each do |c| %>

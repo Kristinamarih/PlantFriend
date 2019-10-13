@@ -10,7 +10,10 @@ class CommentsController < ApplicationController
     end
 
     def new
-        @comment = Comment.new
+        if params[:product_id] && @product = Product.find_by_id(params[:product_id])
+            @comment = Comment.new
+        else
+            
     end
 
     def create
