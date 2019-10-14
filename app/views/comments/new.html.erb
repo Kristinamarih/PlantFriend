@@ -1,5 +1,5 @@
 <% if @comment.product %>
-<h1>Add a Comment for <%= @comment.product.name %></h1>
+<h1>Add a Comment for <%= @comment.product.name %>:</h1>
 <% else %>
 <h1>Add a Comment</h1>
 <% end %>
@@ -14,7 +14,7 @@
     <% end %>
 
     <%= f.label :content %>
-    <%= f.text_field :content %>
+    <%= f.text_area(:content, :size => "30x10") %>
 
     <%= f.submit "Create comment" %>
 

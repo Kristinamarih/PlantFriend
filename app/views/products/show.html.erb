@@ -1,7 +1,6 @@
-<h1><%= @product.name %></h1>
+<h1><%= @product.name %></h1> - <h4><%= link_to @product.category.name, categories_path(@product.category) %></h4>
 <h3>Grown by: <%= @product.user.username %></h3>
 
-<div>Category: <%= link_to @product.category.name, categories_path(@product.category) %></div>
 <div>Quantity: <%= @product.quantity %></div>
 <div>Price: <%= @product.price %></div>
 <div>Description: <%= @product.description %></div>
@@ -16,7 +15,7 @@
 <p><%= link_to "Add a new comment", new_product_comment_path(@product) %></p>
 
 <% @product.comments.each do |c| %>
-    <li><strong><%= c.user.username %></strong> says "<%= link_to c.content, product_comment_path(@product, c)%>"</li>
+    <li><strong><%= c.user.username %></strong> says "<%= link_to c.content, product_comments_path(@product, c)%>"</li>
 <% end %>
 
 <% if @product.comments.empty? %>

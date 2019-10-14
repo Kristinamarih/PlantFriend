@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
 
     def new
         if params[:product_id] && @product = Product.find_by_id(params[:product_id])
-            @comment = @product.comments.build(comment_params)
+            @comment = @product.comments.build
         else
             @error = "That product doesn't exist!" if params[:product_id]
             @comment = Comment.new
@@ -22,7 +22,7 @@ class CommentsController < ApplicationController
     def create
         @comment = current_user.comments.build(comment_params)
         if @comment.save
-            redirect_to comments_path
+            redirect_to products_path(@product.comment)
         else
             render :new
         end

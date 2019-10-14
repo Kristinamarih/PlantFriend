@@ -16,10 +16,10 @@
 
     <br>
     <%= f.label :quantity %>
-    <%= f.text_field :quantity %>
+    <%= f.text_field :quantity, placeholder: "pieces, pounds, etc." %>
     <br>
     <%= f.label :price %>
-    <%= f.text_field :price %>
+    <%= f.text_field :price, :value => "$" %>
     <br>
     <%= f.label :description %>
     <%= f.text_area :description %>
