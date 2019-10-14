@@ -1,0 +1,11 @@
+<% if @product %>
+    <h1> Comments for <%= @product.title %></h1>
+<% else %>
+    <h1>All Comments</h1>
+<% end %>
+
+<ul>
+<% @comments.each do |c| %>
+    <li><%= c.user.username %> says "<%= c.content %>" about this product: <strong><%= link_to c.product.name, product_path(c.product_id) %></li>
+<% end %>
+</ul>

@@ -1,0 +1,13 @@
+<h1>Edit Comment</h1>
+
+<%= form_for(@comment) do |f| %>
+
+    <%= f.label :product %>
+    <%= f.collection_select :product_id, Product.all, :id, :name %>
+
+    <%= f.label :content %>
+    <%= f.text_area :content %>
+
+    <%= f.submit &>
+
+<% end %>

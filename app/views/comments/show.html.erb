@@ -1,3 +1,7 @@
 <h3><%= @comment.content %> - <%= @comment.user.username %></h3>
 
+<% if @comment.user == current_user %>
+    <%= link_to "Edit comment", edit_comment_path(@comment) %>
+<% end %>
+
 <h4>Find the product here: <%= link_to @comment.product.name, product_path(@comment.product_id) %></h4>

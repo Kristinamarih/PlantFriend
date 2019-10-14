@@ -5,6 +5,7 @@ class CommentsController < ApplicationController
         if params[:product_id] && @product = Product.find_by_id(params[:product_id])
             @comments = @product.comments
         else
+            @error = "That product doesn't exist!" if params[:post_id]
             @comments = Comment.all
         end
     end
@@ -13,6 +14,7 @@ class CommentsController < ApplicationController
         if params[:product_id] && @product = Product.find_by_id(params[:product_id])
             @comment = @product.comments.build(comment_params)
         else
+            @error = "That product doesn't exist!" if params[:product_id]
             @comment = Comment.new
         end      
     end

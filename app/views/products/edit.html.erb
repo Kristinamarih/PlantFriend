@@ -1,0 +1,26 @@
+<h1>Edit <%= @product.name %>
+
+<%= form_for(@product) do |f| %>
+
+    <%= f.label "Choose a category" %>
+    <%= f.collection_select :category_id, Category.all, :id, :name, include_blank: true %>
+
+    <p>Or create a new category:
+    <%= f.fields_for :category do |c| %>
+        <%= c.text_field :name %>
+    <% end %>
+    </p>
+    <br>
+    <%= f.label :quantity %>
+    <%= f.text_field :quantity %>
+    <br>
+    <%= f.label :price %>
+    <%= f.text_field :price %>
+    <br>
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+    <br>
+    <%= f.submit %>
+    
+ <% end %>
+

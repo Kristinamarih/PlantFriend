@@ -7,19 +7,36 @@ class ProductsController < ApplicationController
 
     def index
         if params[:user_id] && @user = User.find_by_id(params[:user_id])
-            @products = @user.products.created
+            @products = @user.products.all
         else
             @error = "That user doesn't exist" if params[:user_id]
-            @products = Product.created
+            @products = Product.all
         end
     end
 
     def create
         @product = current_user.products.build(product_params)
-        if @produc t.save
+        @product.build_category if !@product.category
+        if @product.save
             redirect_to products_path
         else
             render :new
+        end
+    end
+
+    def edit
+        @product = Product.find_by(id: params[:id])
+        redirect_to products_path if !@product || @product.user != current_user
+        @product.build_category if !@post.category
+    end
+
+    def update
+        @product = Product.find_by(id: params[:id])
+        redirect_to products_path if !@product || @product.user != current_user
+        if @product.update(product_params)
+            redirect_to product_path(@product)
+        else
+            render :edit
         end
     end
 

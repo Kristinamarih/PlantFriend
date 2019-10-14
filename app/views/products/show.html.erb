@@ -1,14 +1,24 @@
 <h1><%= @product.name %></h1>
-<h3><%= Grown by: <%= @product.user.username %></h3>
+<h3>Grown by: <%= @product.user.username %></h3>
 
-<div><%= @product.quantity %></div>
-<div><%= @product.price %></div>
-<div><%= @product.description %></div>
+<div>Category: <%= link_to @product.category.try(:name), category_path(@post.category_id) %></div>
+<div>Quantity: <%= @product.quantity %></div>
+<div>Price: <%= @product.price %></div>
+<div>Description: <%= @product.description %></div>
 
-<p><%= link_to "See all comments", product_comments_path(@product) %></p>
-<p><%= link_to "Add a new comment", new_product_comment(@product) %></p>
+<% if @product.user == current_user %>
+    <%= link_to "Edit product", edit_product_path(@product) %>
+<% end %>
 
 <h4>Comments:</h4>
+
+<p><%= link_to "See all comments", product_comments_path(@product) %></p>
+<p><%= link_to "Add a new comment", new_product_comment_path(@product) %></p>
+
 <% @product.comments.each do |c| %>
     <li><strong><%= c.user.username %></strong> says "<%= link_to c.content, product_comment_path(@product, c)%>"</li>
+<% end %>
+
+<% if @product.comments.empty? %>
+    <p>Be the first to leave a comment!</p>
 <% end %>
