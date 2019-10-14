@@ -7,10 +7,10 @@ class ProductsController < ApplicationController
 
     def index
         if params[:user_id] && @user = User.find_by_id(params[:user_id])
-            @products = @user.products
+            @products = @user.products.created
         else
             @error = "That user doesn't exist" if params[:user_id]
-            @products = Product.all 
+            @products = Product.created
         end
     end
 
@@ -33,5 +33,4 @@ class ProductsController < ApplicationController
     def product_params
         params.require(:product).permit(:name, :category, :quantity, :price, :description)
     end
-
 end
