@@ -6,13 +6,14 @@
     <%= f.text_field :name %>
     <br>
     <%= f.label :category %>
-    <%= f.collection_select :category_id, Category.all, :id, :name, include_blank: true %>
+    <%= f.collection_select(:category_id, Category.all, :id, :name, include_blank: true) %>
 
     <p>Or create a new category:
     <%= f.fields_for :category do |c| %>
         <%= c.text_field :name %>
     <% end %>
     </p>
+
     <br>
     <%= f.label :quantity %>
     <%= f.text_field :quantity %>

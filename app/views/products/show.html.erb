@@ -1,7 +1,7 @@
 <h1><%= @product.name %></h1>
 <h3>Grown by: <%= @product.user.username %></h3>
 
-<div>Category: <%= link_to @product.category.try(:name), category_path(@post.category_id) %></div>
+<div>Category: <%= link_to @product.category.name, categories_path(@product.category) %></div>
 <div>Quantity: <%= @product.quantity %></div>
 <div>Price: <%= @product.price %></div>
 <div>Description: <%= @product.description %></div>
