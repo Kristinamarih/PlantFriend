@@ -2,13 +2,15 @@
     <%= link_to "Show previous", '?m=all' %>
 <% end %>
 
-<% @conversation.messages.each do |message| %>
-    <% if message.body %>
-        <% user = User.find(message.user_id) %>
-        <%= user.username %><%= message.message_time %>
-        <%= message.body %>
+<% if @conversation.present? %>
+    <% @conversation.messages.each do |message| %>
+        <% if message.body %>
+            <% user = User.find(message.user_id) %>
+            <%= user.username %><%= message.message_time %>
+            <%= message.body %>
+        <% end %>
     <% end %>
-<% end %>
+<% else %>
 
 <%= form_for [@conversation, @message] do |f| %>
 

@@ -2,7 +2,7 @@ class ConversationsController < ApplicationController
 
     def index
         @users = User.all 
-        @conversations = Conversation.all 
+        @conversations = Conversation.where("sender_id = ? OR receiver_id = ?", current_user.id, current_user.id) 
     end
 
     def create 
@@ -15,6 +15,7 @@ class ConversationsController < ApplicationController
     end
 
     private
+    
     def conversation_params
         params.permit(:sender_id, :recipient_id)
     end

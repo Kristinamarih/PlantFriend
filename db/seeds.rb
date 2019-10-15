@@ -7,11 +7,11 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-Category.create(name: 'Vegetable')
-Category.create(name: 'Fruit')
-Category.create(name: 'Flower')
-Category.create(name: 'Nuts & Seeds')
-Category.create(name: 'Plant')
-Category.create(name: 'Other')
+Category.find_or_create_by(name: 'Vegetable')
+Category.find_or_create_by(name: 'Fruit')
+Category.find_or_create_by(name: 'Flower')
+Category.find_or_create_by(name: 'Nuts & Seeds')
+Category.find_or_create_by(name: 'Plant')
+Category.find_or_create_by(name: 'Other')
 
 Message.create(body: 'Welcome to your inbox')
