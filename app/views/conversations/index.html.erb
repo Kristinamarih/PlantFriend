@@ -1,0 +1,12 @@
+<h1>Messages</h1>
+
+<% @conversations.each do |c| %>
+    <% if c.sender_id == current_user.id || c.recipient_id == current_user.id %>
+        <% if c.sender_id == current_user.id %>
+            <% recipient = User.find(c.recipient_id) %>
+        <% else %>
+            <% recipient = User.find(c.sender_id) %>
+        <% end %>
+        <%= link_to recipient.username, conversation_messages_path(c) %>
+    <% end %>
+<% end %>

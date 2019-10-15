@@ -1,6 +1,7 @@
 class MessagesController < ApplicationController
 
     def index
+        @conversation = Conversation.find(params[:conversation_id])
         @messages = @conversation.messages
         if @messages.length > 10
             @over_ten = true
@@ -15,7 +16,6 @@ class MessagesController < ApplicationController
                 @messages.last.read = true;
             end
         end
-
         @messages = @conversation.messages.new
     end
 
