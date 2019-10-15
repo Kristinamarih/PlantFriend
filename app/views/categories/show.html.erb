@@ -1,0 +1,8 @@
+<h1>All products in the <%= @category.name %> category</h1>
+
+<% @category.products.each do |product| %>
+    <ol>
+        <li><%= link_to product.name, product_path(product) %></li>
+    </ol>
+<% end %>
+

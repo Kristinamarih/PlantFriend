@@ -1,16 +1,10 @@
-<% if @over_ten %>
-    <%= link_to "Show previous", '?m=all' %>
-<% end %>
 
-<% if @conversation.present? %>
-    <% @conversation.messages.each do |message| %>
-        <% if message.body %>
-            <% user = User.find(message.user_id) %>
-            <%= user.username %><%= message.message_time %>
-            <%= message.body %>
-        <% end %>
+<% @conversation.messages.each do |message| %>
+    <% if message.body %>
+        <%= message.user.username %><%= message.message_time %>
+        <%= message.body %>
     <% end %>
-<% else %>
+<% end %>
 
 <%= form_for [@conversation, @message] do |f| %>
 
@@ -19,6 +13,8 @@
 
     <%= f.text_field :user_id, value: current_user.id, type: "hidden" %>
 
-    <%= f.submit "Add reply" %>
+    <%= f.submit "Send" %>
+
 <% end %>
+
 

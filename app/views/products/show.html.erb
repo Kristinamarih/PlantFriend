@@ -1,7 +1,11 @@
 <h1><%= @product.name %></h1>
-<%= link_to @product.category.name, product_categories_path(@product.category) %>
+<%= link_to @product.category.name, product_category_path(@product.id, @product.category.id) %>
+
 <h3>Grown by: <%= @product.user.username %></h3>
-<p><%= link_to "Message me!", conversations_path(sender_id: current_user.id, recipient_id: @product.user.id), method: 'post' %>
+
+<% if @product.user != current_user %>
+    <p><%= link_to "Message me!", conversations_path(sender_id: current_user.id, recipient_id: @product.user.id), method: 'post' %>
+<% end %>
 
 <div>Quantity: <%= @product.quantity %></div>
 <div>Price: <%= @product.price %></div>

@@ -16,8 +16,9 @@ Rails.application.routes.draw do
   
   resources :products do
     resources :comments, only: [:new, :create, :index]
-    resources :categories
+    resources :categories, only: [:show]
   end
+  resources :categories, only: [:index]
   resources :comments
   resources :conversations do
     resources :messages
