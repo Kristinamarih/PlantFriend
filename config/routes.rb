@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :messages
+  resources :conversations
   root "sessions#home"
 
   get '/signup' => 'users#new'
@@ -17,6 +19,9 @@ Rails.application.routes.draw do
     resources :categories
   end
   resources :comments
+  resources :conversations do
+    resources :messages
+  end
   resources :users do
     resources :posts, only: [:create, :index]
   end

@@ -1,4 +1,5 @@
-<h1><%= @product.name %></h1> - <h4><%= link_to @product.category, product_categories_path(@product.category) %></h4>
+<h1><%= @product.name %></h1>
+<%= link_to @product.category.name, product_categories_path(@product.category) %>
 <h3>Grown by: <%= @product.user.username %></h3>
 
 <div>Quantity: <%= @product.quantity %></div>

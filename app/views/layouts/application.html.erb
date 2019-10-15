@@ -12,9 +12,10 @@
   <body>
     <div>
     <% if logged_in? %>
-      <%= link_to "Logout", logout_path, method: "delete" %>
-      <%= link_to "Add a product", new_product_path %>
-      <%= link_to "View all products", products_path %>
+      <%= link_to "Logout", logout_path, method: "delete" %> |
+      <%= link_to "Add a product", new_product_path %> |
+      <%= link_to "View all products", products_path %> |
+      <%= link_to "Your profile", user_path(@user) %>
     <% else %>
       <%= link_to "Sign up", signup_path %> |
       <%= link_to "Log in", login_path %> |
