@@ -1,7 +1,7 @@
 class Product < ApplicationRecord
   belongs_to :user
   belongs_to :category
-  has_many :comments
+  has_many :comments, dependent: :destroy
   has_many :users, through: :comments
 
   scope :created, -> { order(:created_at)}

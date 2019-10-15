@@ -1,13 +1,16 @@
+
 <% @categories.each do |category| %>
     <li>
         <%= category.name %>
         <ol>
             <% category.products.each do |product| %>
-                <li><%= link_to product.name, product_path(product) %></li>
+                <li><%= link_to product.name, product_path(product) %>
             <% end %>
         </ol>
     </li>
 <% end %>
+
+
 
 
 

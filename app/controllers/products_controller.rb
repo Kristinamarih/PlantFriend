@@ -21,7 +21,6 @@ class ProductsController < ApplicationController
 
     def create
         @product = current_user.products.build(product_params)
-        @product.build_category if !@product.category
         if @product.save
             redirect_to products_path
         else
@@ -32,7 +31,6 @@ class ProductsController < ApplicationController
     def edit
         @product = Product.find_by(id: params[:id])
         redirect_to products_path if !@product || @product.user != current_user
-        @product.build_category if !@product.category
     end
 
     def update
@@ -50,9 +48,15 @@ class ProductsController < ApplicationController
         redirect_to products_path if !@product
     end
 
+    def destroy
+        @product = Product.find_by(id: params[:id])
+        @product.destroy
+        redirect_to products_path
+    end
+
     private
 
     def product_params
-        params.require(:product).permit(:name, :category, :quantity, :price, :description)
+        params.require(:product).permit(:name, :category_id, :quantity, :price, :description)
     end
 end

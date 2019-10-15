@@ -1,4 +1,4 @@
-<h1><%= @product.name %></h1> - <h4><%= link_to @product.category.name, categories_path(@product.category) %></h4>
+<h1><%= @product.name %></h1> - <h4><%= link_to @product.category, product_categories_path(@product.category) %></h4>
 <h3>Grown by: <%= @product.user.username %></h3>
 
 <div>Quantity: <%= @product.quantity %></div>
@@ -7,6 +7,7 @@
 
 <% if @product.user == current_user %>
     <%= link_to "Edit product", edit_product_path(@product) %>
+    <%= link_to "Delete product", product_path(@product), :data => {:confirm => "You sure?", :method => "delete"} %>
 <% end %>
 
 <h4>Comments:</h4>

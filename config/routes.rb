@@ -14,8 +14,8 @@ Rails.application.routes.draw do
   
   resources :products do
     resources :comments, only: [:new, :create, :index]
+    resources :categories
   end
-  resources :categories
   resources :comments
   resources :users do
     resources :posts, only: [:create, :index]
