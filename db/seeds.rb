@@ -13,3 +13,5 @@ Category.create(name: 'Flower')
 Category.create(name: 'Nuts & Seeds')
 Category.create(name: 'Plant')
 Category.create(name: 'Other')
+
+Message.create(body: 'Welcome to your inbox')

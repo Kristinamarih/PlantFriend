@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+    helper ProductsHelper
     before_action :redirect_if_not_logged_in
 
     def new

@@ -12,7 +12,7 @@
     <%= f.text_field :quantity, placeholder: "pieces, pounds, etc." %>
     <br>
     <%= f.label :price %>
-    <%= f.text_field :price, :value => "$" %>
+    <%= f.number_field :price, value: to_currency(f.object.price) %>
     <br>
     <%= f.label :description %>
     <%= f.text_area :description %>

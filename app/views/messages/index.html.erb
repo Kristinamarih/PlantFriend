@@ -2,7 +2,7 @@
     <%= link_to "Show previous", '?m=all' %>
 <% end %>
 
-<% @messages.each do |message| %>
+<% @conversation.messages.each do |message| %>
     <% if message.body %>
         <% user = User.find(message.user_id) %>
         <%= user.username %><%= message.message_time %>
