@@ -10,4 +10,8 @@ class Product < ApplicationRecord
   def category_attributes(attr)
     self.category = Category.find_or_create_by(attr) if !attr[:name].blank?
   end
+
+  def created_time
+    created_at.strftime("%m/%d/%y at %l:%M %p")
+  end
 end

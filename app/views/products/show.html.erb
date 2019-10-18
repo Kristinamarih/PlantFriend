@@ -1,30 +1,54 @@
-<h1><%= @product.name %></h1>
-<%= link_to @product.category.name, product_category_path(@product.id, @product.category.id) %>
+<div class="container">
 
-<h3>Grown by: <%= @product.user.username %></h3>
+    <div class="row">
 
-<% if @product.user != current_user %>
-    <p><%= link_to "Message me!", conversations_path(sender_id: current_user.id, recipient_id: @product.user.id), method: 'post' %>
-<% end %>
+      <!-- Post Content Column -->
+      <div class="col-lg-8">
 
-<div>Quantity: <%= @product.quantity %></div>
-<div>Price: <%= @product.price %></div>
-<div>Description: <%= @product.description %></div>
+        <!-- Title -->
+        <h1 class="mt-4"><%= @product.name %></h1>
 
-<br>
+        <!-- Author -->
+        <% if @product.user != current_user %>
+        <p class="lead"> Grown by: <%= link_to @product.user.username, conversations_path(sender_id: current_user.id, recipient_id: @product.user.id), method: 'post' %></p>
+        <% end %>
 
-<% if @product.user == current_user %>
-    <%= link_to "Edit", edit_product_path(@product) %> or <%= link_to "delete product", product_path(@product), :data => {:confirm => "You sure?", :method => "delete"} %>
-<% end %>
+        <hr>
 
-<h4>Comments:</h4>
+        <!-- Date/Time -->
+        <p><%= @product.created_time %> in <%= link_to @product.category.name, product_category_path(@product.id, @product.category.id) %></p>
 
-<p><%= link_to "See all comments", product_comments_path(@product) %> or <%= link_to "add a new comment", new_product_comment_path(@product) %></p>
+        <hr>
 
-<% @product.comments.each do |c| %>
-    <li><strong><%= c.user.username %></strong> says "<%= link_to c.content, product_comments_path(@product, c)%>"</li>
-<% end %>
+        <!-- Post Content -->
+        <p>Quantity: <%= @product.quantity %></p>
+        <p>Price: <%= @product.price %></p>
+        <p>Description: <%= @product.description %></p>
 
-<% if @product.comments.empty? %>
-    <p>Be the first to leave a comment!</p>
-<% end %>
+        <% if @product.user == current_user %>
+            <p><%= link_to "Edit", edit_product_path(@product) %> or <%= link_to "delete product", product_path(@product), :data => {:confirm => "You sure?", :method => "delete"} %></p>
+        <% end %>
+    
+        <hr>
+        
+        <h4>Comments:</h4>
+
+        <% if @product.comments.empty? %>
+            <p>Be the first to leave a comment!</p>
+        <% end %>
+
+        <p><%= link_to "See all comments", product_comments_path(@product) %> or <%= link_to "add a new comment", new_product_comment_path(@product) %></p>
+
+        <!-- Single Comment -->
+        <div class="media mb-4">
+            <div class="media-body">
+            <% @product.comments.limit(5).each do |c| %>
+                <h5 class="mt-0"><%= link_to c.user.username, conversations_path(sender_id: current_user.id, recipient_id: c.user.id), method: 'post' %></h5>
+                <%= c.content %>
+            <% end %>
+            <br><br>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>

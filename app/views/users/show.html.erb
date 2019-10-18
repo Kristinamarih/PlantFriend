@@ -1,5 +1,33 @@
-<h1>Welcome, <%= @user.username %>!</h1>
 
-<h3>Here's the most recent activity:</h3>
+<header>
+    <div class="container h-100">
+        <div class="row h-100 align-items-center">
+            <div class="col-12 text-center">
+            <h1 class="font-weight-light">Welcome, <%= @user.username %>!</h1>
+            <p class="lead">Here's the most recent activity:</p>
+            </div>
+        </div>
+    </div>
+</header>
 
+<section class="py-5">
+    <div class="container">
+        <div class="col-12 text-center">
+            <h3 class="font-weight-light">Product listings:</h3>
+            <% @products.each do |product| %>
+                <p><%= link_to product.name, product_path(product) %> - <%= product.created_time %></p>
+            <% end %>
+        </div>
+    </div>
+</section>
 
+<section class="py-5">
+    <div class="container">
+        <div class="col-12 text-center">
+            <h3 class="font-weight-light">Comments:</h3>
+            <% @comments.each do |comment| %>
+                <p><%= link_to comment.user.username, comment_path(comment) %> - <%= comment.created_time %></p>
+            <% end %>
+        </div>
+    </div>
+</section>

@@ -1,21 +1,29 @@
-<% if @comment.product %>
-<h1>Add a Comment for <%= @comment.product.name %>:</h1>
-<% else %>
-<h1>Add a Comment</h1>
-<% end %>
+<div class="card my-4">
 
-<%= form_for([@comment.product, @comment]) do |f| %>
-
-    <% if !@comment.product %>
-        <%= f.label :product %>
-        <%= f.collection_select :product_id, Product.all, :id, :name %>
-    <% else %>
-        <%= f.hidden_field :product_id %>
+    <% if @comment.product %>
+        <h2 class="card-header">Add a Comment for <%= @comment.product.name %>: <% else %> Add a Comment: </h2>
     <% end %>
 
-    <%= f.label :content %>
-    <%= f.text_area(:content, :size => "30x10") %>
+    <div class="card-body">
+        <div class="form-group">
 
-    <%= f.submit "Create comment" %>
+            <%= form_for([@comment.product, @comment]) do |f| %>
+                
+                <% if !@comment.product %>
+                    <%= f.label :product %>
+                    <%= f.collection_select :product_id, Product.all, :id, :name %>
+                <% else %>
+                    <%= f.hidden_field :product_id %>
+                <% end %>
 
-<% end %>
+                <%= f.text_area(:content, :class => "form-control", :rows => "3") %>
+
+                <br>
+                    
+                <%= f.submit("Create comment", :class => "btn btn-primary") %>
+                        
+            <% end %>
+
+        </div>
+    </div>
+</div>

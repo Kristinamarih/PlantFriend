@@ -12,4 +12,5 @@ class Conversation < ApplicationRecord
     def receiver(current_user)
         self.sender_id == current_user.id ? self.recipient : self.sender
     end
+
 end

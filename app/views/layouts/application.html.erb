@@ -20,7 +20,7 @@
         <ul class="nav navbar-nav navbar-right">
           <% if logged_in? %>
             <li><%= link_to "Logout", logout_path, method: "delete" %></li>
-            <li><%= link_to "Profile", users_path(@user) %></li>
+            <li><%= link_to "Profile", user_path(current_user.id) %></li>
             <li><%= link_to "Add product", new_product_path %></li>
             <li><%= link_to "All products", products_path %></li>
             <li><%= link_to "Messages", conversations_path(current_user.id) %></li>

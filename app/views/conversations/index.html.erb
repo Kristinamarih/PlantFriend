@@ -1,5 +1,5 @@
 <h1>Messages</h1>
 
 <% @conversations.each do |conversation| %>
-    <%= link_to conversation.receiver(current_user).username, conversation_messages_path(conversation) %>
+    <p><%= link_to conversation.receiver(current_user).username, conversation_messages_path(conversation) %></p>
 <% end %>
