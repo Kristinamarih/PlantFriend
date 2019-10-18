@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+layout "home"
 
     def create
         user = User.find_by(username: params[:user][:username])
