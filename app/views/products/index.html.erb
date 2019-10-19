@@ -1,7 +1,13 @@
-<h1>All Products</h1>
-
-<h4>Browse products by <%= link_to "category", categories_path %></h4>
-
-<% @products.each do |p| %>
-    <li><%= link_to p.name, product_path(p) %></li>
-<% end %>
+<header>
+    <div class="container h-100">
+        <div class="row h-100 align-items-center">
+            <div class="col-12 text-center">
+            <h1 class="font-weight-light">All Products</h1>
+            <p class="lead">Browse products by <%= link_to "category", categories_path %></p>
+            <% @products.each do |p| %>
+                <li><%= link_to p.name, product_path(p) %></li>
+            <% end %>
+            </div>
+        </div>
+    </div>
+</header>

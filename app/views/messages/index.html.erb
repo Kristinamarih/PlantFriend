@@ -1,25 +1,28 @@
 <div class="container">
     <div class="col-12 text-center">
-
-    <% @conversation.messages.each do |message| %>
-        <% if message.body %>
-            <p><%= message.message_time %> | <strong><%= message.user.username %>:</strong></p>
-            <p><%= message.body %></p>
+        <div id="messages">
+        <% @conversation.messages.each do |message| %>
+            <% if message.body %>
+                <h4 class="media-heading"><%= message.user.username %> <small class="text-muted"><%= message.message_time %></small></h4>
+                <p><%= message.body %></p>
+            <% end %>
         <% end %>
-    <% end %>
+        </div>
+      </div>
+</div>
 
-    <hr>
+<hr>
 
-    <%= form_for [@conversation, @message] do |f| %>
+<div class="container">
+    <div class="col-12 text-center">
+        <%= form_for [@conversation, @message] do |f| %>
+            <%= f.text_area :body %>
 
-        <%= f.text_area :body %>
+            <%= f.text_field :user_id, value: current_user.id, type: "hidden" %>
+            <br>
 
-        <%= f.text_field :user_id, value: current_user.id, type: "hidden" %>
+            <%= f.submit("Send", :class => "btn btn-primary") %>
 
-        <br>
-
-        <%= f.submit("Send", :class => "btn btn-primary") %>
-
-    <% end %>
+        <% end %>
     </div>
 </div>

@@ -1,14 +1,18 @@
-
-<% @categories.each do |category| %>
-    <li>
-        <%= category.name %>
-        <ol>
-            <% category.products.each do |product| %>
-                <li><%= link_to product.name, product_path(product) %>
+<header>
+    <div class="container h-100">
+        <div class="row h-100 align-items-center">
+            <div class="col-12 text-center">
+            <h1 class="font-weight-light">All Categories</h1>
+            <% @categories.each do |category| %>
+                <p class="lead"><%= category.name %></p>
+                <% category.products.each do |product| %>
+                    <p><%= link_to product.name, product_path(product) %></p>
+                <% end %>
             <% end %>
-        </ol>
-    </li>
-<% end %>
+            </div>
+        </div>
+    </div>
+</header>
 
 
 
