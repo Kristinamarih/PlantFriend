@@ -1,16 +1,25 @@
-<h1>Log in</h1>
-
 <%= flash[:message] if flash[:message] %>
 <br>
-<%= form_for :user do |f| %>
 
-    <%= f.label :username %>
-    <%= f.text_field :username %>
-    <br>
-    <%= f.label :password %>
-    <%= f.password_field :password %>
-    <br>
+<header class="masthead">
+  <div class="container h-100">
+    <div class="row h-100 align-items-center">
+      <div class="col-12 text-center">
+        <h1 class="font-weight-light">Log in</h1>
 
-    <%= f.submit "Log in!" %>
+        <%= form_for :user do |f| %>
 
-<% end %>
+            <%= f.label :username %>
+            <%= f.text_field :username %>
+            <br>
+            <%= f.label :password %>
+            <%= f.password_field :password %>
+            <br><br>
+        
+            <%= f.submit("Log in!", :class => "btn btn-primary") %>
+        
+        <% end %>
+      </div>
+    </div>
+  </div>
+</header>

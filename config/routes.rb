@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   get 'users/:id' => 'users#show', as: :user
 
-  delete '/logout' => 'sessions#destroy'
+  get '/logout' => 'sessions#destroy'
 
   get '/auth/google_oauth2/callback' => 'sessions#google'
   
