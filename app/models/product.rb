@@ -4,6 +4,10 @@ class Product < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :users, through: :comments
 
+  validates :name, :quantity, :price, :description, :presence => true
+  validates :description, :length => { :maximum => 1000 }
+  
+
   scope :created, -> { order(:created_at)}
   scope :most_comments, -> {joins(:comments).group('products.id').order('count(products.id) desc')}
 
