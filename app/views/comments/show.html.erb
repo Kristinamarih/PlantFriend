@@ -1,4 +1,4 @@
-<h3><%= @comment.content %> - <%= @comment.user.username %></h3>
+<h3>"<%= @comment.content %>" - <%= @comment.user.username %></h3>
 
 <% if @comment.user == current_user %>
     <%= link_to "Edit comment", edit_comment_path(@comment) %>

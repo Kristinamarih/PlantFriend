@@ -1,23 +1,33 @@
-<h1>New Product</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8">
 
-<%= form_for(@product) do |f| %>
+        <h1>New Product</h1>
 
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-    <br>
-    <%= f.label :category %>
-    <%= f.collection_select :category_id, Category.all, :id, :name %>
-    <br>
-    <%= f.label :quantity %>
-    <%= f.text_field :quantity, placeholder: "pieces, pounds, etc." %>
-    <br>
-    <%= f.label :price %>
-    <%= f.number_field :price, value: to_currency(f.object.price) %>
-    <br>
-    <%= f.label :description %>
-    <%= f.text_area :description %>
-    <br><br>
+        <hr>
 
-    <%= f.submit("Create", :class => "btn btn-primary") %>
+        <%= form_for(@product) do |f| %>
 
-<% end %>
+            <%= f.label :name %>
+            <%= f.text_field :name %>
+            <br>
+            <%= f.label :category %>
+            <%= f.collection_select :category_id, Category.all, :id, :name %>
+            <br>
+            <%= f.label :quantity %>
+            <%= f.text_field :quantity, placeholder: "pieces, pounds, etc." %>
+            <br>
+            <%= f.label :price %>
+            <%= f.number_field :price, placeholder: "US dollars", value: to_currency(f.object.price) %>
+            <br>
+            <%= f.label :description %>
+            <%= f.text_area :description %>
+            <br>
+
+            <%= f.submit("Create", :class => "btn btn-primary") %>
+
+        <% end %>
+
+        </div>
+    </div>
+</div>

@@ -1,11 +1,20 @@
-<% if @product %>
-    <h1> Comments for <%= @product.name %></h1>
-<% else %>
-    <h1>All Comments</h1>
-<% end %>
+<div class="container">
 
-<ul>
-<% @comments.each do |c| %>
-    <li><%= c.user.username %> says "<%= c.content %>" about this product: <strong><%= link_to c.product.name, product_path(c.product_id) %></li>
-<% end %>
-</ul>
+    <div class="row">
+
+        <div class="col-lg-8">
+
+        <% if @product %>
+        <h1 class="mt-4">Comments for <strong><%= link_to @product.name, product_path(@product) %></h1>
+        <% else %>
+        <h1 class="mt-4">t)>All Comments</h1>
+        <% end %>
+
+        <% @comments.each do |c| %>
+        <p class="lead"><strong><%= c.user.username %></strong> says "<%= c.content %>" at <%= c.created_time %></p>
+        <% end %>
+
+        </div>
+    </div>
+</div>
+    
