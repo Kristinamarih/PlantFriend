@@ -22,7 +22,7 @@ layout "home"
             user.username = auth['info']['first_name']
             user.password = SecureRandom.hex(10)
         end
-        if @user.save
+        if @user.persisted?
             session[:user_id] = @user.id 
             redirect_to user_path(@user)
         else
