@@ -12,7 +12,7 @@
             <%= f.text_field :name %>
             <br>
             <%= f.label :category %>
-            <%= f.collection_select :category_id, Category.all, :id, :name %>
+            <%= f.collection_select :category_id, Category.where("id > ?", 2), :id, :name %>
             <br>
             <%= f.label :quantity %>
             <%= f.text_field :quantity, placeholder: "pieces, pounds, etc." %>

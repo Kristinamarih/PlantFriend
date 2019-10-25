@@ -7,7 +7,7 @@
 
         <!-- Author -->
         <% if @product.user != current_user %>
-        <p class="lead"> Grown by: <%= link_to @product.user.username, conversations_path(sender_id: current_user.id, recipient_id: @product.user.id), method: 'post' %></p>
+        <p class="lead"> Grown by: <%= link_to @product.user.username, conversations_path(sender_id: current_user.id, recipient_id: @product.user.id), method: 'post' %></p>        
         <% end %>
 
         <hr>

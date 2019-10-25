@@ -9,7 +9,7 @@
         <%= form_for(@product) do |f| %>
 
             <%= f.label "Choose a category" %>
-            <%= f.collection_select :category_id, Category.all, :id, :name %>
+            <%= f.collection_select :category_id, Category.where("id > ?", 2), :id, :name %>
             <br>
             <%= f.label :quantity %>
             <%= f.text_field :quantity %>

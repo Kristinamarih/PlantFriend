@@ -4,6 +4,8 @@
             <ul class="list-group">
                 <h1>Messages</h1>
 
+                <% if @conversations %>
+
                 <% @conversations.each do |conversation| %>
                     <li class="list-group-item"
                         <p><%= conversation.receiver(current_user).username %></p>
@@ -11,9 +13,21 @@
                         <%= link_to 'View conversation', conversation_messages_path(conversation) %>
                     </li>
                 <% end %>
+
+                <% else %>
+
+                <%= form_for [@conversation, @message] do |f| %>
+                    <%= f.text_area :body %>
+        
+                    <%= f.text_field :user_id, value: current_user.id, type: "hidden" %>
+                    <br>
+        
+                    <%= f.submit("Send", :class => "btn btn-primary") %>
+        
+                <% end %>
+                <% end %>
+           
             </ul>
         </div>
     </div>
-</div>
-
-                  
+</div>                 
