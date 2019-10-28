@@ -3,7 +3,6 @@ class ConversationsController < ApplicationController
     def index
         @users = User.where.not(id: current_user.id)
         @conversations = Conversation.where("sender_id = ? OR recipient_id = ?", current_user.id, current_user.id)
-        @messages = Message.all
     end
 
     def create 
@@ -12,6 +11,7 @@ class ConversationsController < ApplicationController
         else
             @conversation = Conversation.create!(conversation_params)
         end
+        
         redirect_to conversation_messages_path(@conversation)
     end
 

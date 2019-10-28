@@ -3,18 +3,13 @@
         <div id="messages">
         <% @conversation.messages.each do |message| %>
             <% if message.body %>
-                <h4 class="media-heading"><%= message.user.username %> <small class="text-muted"><%= message.message_time %></small></h4>
+                <h4 class="media-heading"><%= message.user.username %><small class="text-muted"><%= message.message_time %></small></h4>
                 <p><%= message.body %></p>
             <% end %>
         <% end %>
         </div>
-      </div>
-</div>
+        <hr>
 
-<hr>
-
-<div class="container">
-    <div class="col-12 text-center">
         <%= form_for [@conversation, @message] do |f| %>
             <%= f.text_area :body %>
 
@@ -26,3 +21,6 @@
         <% end %>
     </div>
 </div>
+
+        
+  
