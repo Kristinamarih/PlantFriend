@@ -10,6 +10,10 @@
                     <%= link_to 'View conversation', conversation_messages_path(conversation) %>
                 </li>
             <% end %>
+
+            <% @users.each do |user| %>
+                <%= link_to user.username, conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post' %>
+            <% end %>
         </ul>
     </div>
 </div>                 
