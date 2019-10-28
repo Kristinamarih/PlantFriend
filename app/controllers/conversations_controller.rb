@@ -3,6 +3,8 @@ class ConversationsController < ApplicationController
     def index
         @users = User.where.not(id: current_user.id)
         @conversations = Conversation.where("sender_id = ? OR recipient_id = ?", current_user.id, current_user.id)
+        @conversation = Conversation.new(sender_id: current_user.id)
+        @message = Message.new
     end
 
     def create 
