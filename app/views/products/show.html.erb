@@ -23,7 +23,7 @@
         <p>Description: <%= @product.description %></p>
 
         <% if @product.user == current_user %>
-            <p><%= link_to "Edit", edit_product_path(@product) %> or <%= link_to "delete product", product_path(@product), :data => {:confirm => "You sure?", :method => "delete"} %></p>
+            <p><%= button_to "Edit", product_path(@product) %> or <%= button_to "delete product", product_path(@product), method: :delete, data: { confirm: "You sure?" } %></p>
         <% end %>
     
         <hr>
