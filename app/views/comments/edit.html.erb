@@ -1,5 +1,7 @@
 <h1>Edit Comment</h1>
 
+<%= render partial: "layouts/errors", locals: { object: @comment } %>
+
 <%= form_for(@comment) do |f| %>
 
     <%= f.label :product %>

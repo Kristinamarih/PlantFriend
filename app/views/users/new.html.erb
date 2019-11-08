@@ -4,6 +4,8 @@
       <div class="col-12 text-center">
         <h1 class="font-weight-light">Sign Up</h1>
 
+        <%= render partial: "layouts/errors", locals: { object: @user } %>
+        
         <%= form_for(@user, url:'/signup') do |f| %>
 
             <%= f.label :username %>

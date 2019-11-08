@@ -4,6 +4,8 @@
         <h2 class="card-header">Add a Comment for <%= @comment.product.name %>: <% else %> Add a Comment: </h2>
     <% end %>
 
+    <%= render partial: "layouts/errors", locals: { object: @comment } %>
+
     <div class="card-body">
         <div class="form-group">
 

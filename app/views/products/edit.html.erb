@@ -4,6 +4,8 @@
 
         <h1 class="mt-4">Edit <%= @product.name %></h1>
 
+        <%= render partial: "layouts/errors", locals: { object: @product } %>
+
         <hr>
 
         <%= form_for(@product) do |f| %>
