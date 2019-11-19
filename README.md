@@ -5,12 +5,13 @@ This Rails project aims to create an online farmer's market where people can pos
 To use this app, first clone:
 
  `'PlantFriend'`
+
 And then execute:
 
 `rails s`
 
 ## Contributing
-Bug reports and pull requests are welcome on GitHub at https://github.com/'funny-ninja-2040'/PlantFriend. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the Contributor Covenant code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/Kristinamarih/PlantFriend. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the Contributor Covenant code of conduct.
 
 ## License
 The project is available as open source under the terms of the MIT License.
