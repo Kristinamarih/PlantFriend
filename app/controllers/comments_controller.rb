@@ -16,7 +16,7 @@ class CommentsController < ApplicationController
         else
             @error = "That product doesn't exist!" if params[:product_id]
             @comment = Comment.new
-        end      
+        end
     end
 
     def create

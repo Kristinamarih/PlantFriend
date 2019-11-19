@@ -3,11 +3,9 @@ This Rails project aims to create an online farmer's market where people can pos
 
 ## Installation
 To use this app, first clone:
-
  `'PlantFriend'`
 
 And then execute:
-
 `rails s`
 
 ## Contributing

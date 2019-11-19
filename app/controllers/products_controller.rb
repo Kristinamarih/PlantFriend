@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
     helper ProductsHelper
     before_action :redirect_if_not_logged_in
+    before_action :find_product, only: [:show, :edit, :destroy, :update]
 
     def new
         if params[:user_id] && @user = User.find_by_id(params[:user_id])
@@ -8,7 +9,6 @@ class ProductsController < ApplicationController
         else
             @product = Product.new
         end
-        @product.build_category
     end
 
     def index
@@ -30,12 +30,10 @@ class ProductsController < ApplicationController
     end
 
     def edit
-        @product = Product.find_by(id: params[:id])
         redirect_to products_path if !@product || @product.user != current_user
     end
 
     def update
-        @product = Product.find_by(id: params[:id])
         redirect_to products_path if !@product || @product.user != current_user
         if @product.update(product_params)
             redirect_to product_path(@product)
@@ -45,12 +43,10 @@ class ProductsController < ApplicationController
     end
 
     def show
-        @product = Product.find_by_id(params[:id])
         redirect_to products_path if !@product
     end
 
     def destroy
-        @product = Product.find_by(id: params[:id])
         @product.destroy
         redirect_to products_path
     end
@@ -59,5 +55,9 @@ class ProductsController < ApplicationController
 
     def product_params
         params.require(:product).permit(:name, :category_id, :quantity, :price, :description)
+    end
+
+    def find_product
+        @product = Product.find_by(id: params[:id])
     end
 end
