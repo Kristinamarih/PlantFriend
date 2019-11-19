@@ -1,6 +1,13 @@
 class CommentsController < ApplicationController
     before_action :redirect_if_not_logged_in
 
+    def like
+        @comment = Comment.find(params[:id])
+        @comment.increment!(:likes)
+        @comment.create_activity :like 
+        redirect_to comment_path(@comment)
+    end
+
     def index
         if params[:product_id] && @product = Product.find_by_id(params[:product_id])
             @comments = @product.comments

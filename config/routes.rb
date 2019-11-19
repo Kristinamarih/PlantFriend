@@ -17,7 +17,11 @@ Rails.application.routes.draw do
   get '/auth/google_oauth2/callback' => 'sessions#google'
   
   resources :products do
-    resources :comments, only: [:new, :create, :index]
+    resources :comments, only: [:new, :create, :index] do
+      member do
+        post :like
+      end
+    end
     resources :categories, only: [:show]
   end
   resources :categories, only: [:index]
@@ -31,4 +35,3 @@ Rails.application.routes.draw do
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
- 

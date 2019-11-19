@@ -39,9 +39,11 @@
         <!-- Single Comment -->
         <div class="media mb-4">
             <div class="media-body">
-            <% @product.comments.limit(5).each do |c| %>
-                <h5 class="mt-0"><%= link_to c.user.username, conversations_path(sender_id: current_user.id, recipient_id: c.user.id), method: 'post' %></h5>
-                <%= c.content %>
+            <% @product.comments.limit(5).each do |comment| %>
+                <h5 class="mt-0"><%= link_to comment.user.username, conversations_path(sender_id: current_user.id, recipient_id: comment.user.id), method: 'post' %></h5>
+                <%= comment.content %>
+                <%= comment.likes %>
+                <%= link_to content_tag(:span, '', class: 'glyphicon glyphican-thumbs-up') + 'Like', like_comment_path(:id => @product.comment.id), method: :post %>
             <% end %>
             <br><br>
             </div>
