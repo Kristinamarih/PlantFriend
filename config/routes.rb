@@ -17,18 +17,20 @@ Rails.application.routes.draw do
   get '/auth/google_oauth2/callback' => 'sessions#google'
   
   resources :products do
-    resources :comments, only: [:new, :create, :index] do
-      member do
-        post :like
-      end
-    end
+    resources :comments, only: [:new, :create, :index]
     resources :categories, only: [:show]
   end
+
   resources :categories, only: [:index]
-  resources :comments
+
+  resources :comments do
+    get :like, on: :member
+  end
+
   resources :conversations, only: [:index, :create] do
     resources :messages, only: [:index, :create]
   end
+
   resources :users do
     resources :posts, only: [:create, :index]
   end

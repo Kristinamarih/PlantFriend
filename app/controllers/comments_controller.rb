@@ -4,8 +4,7 @@ class CommentsController < ApplicationController
     def like
         @comment = Comment.find(params[:id])
         @comment.increment!(:likes)
-        @comment.create_activity :like 
-        redirect_to comment_path(@comment)
+        redirect_to product_path(@comment.product)
     end
 
     def index
